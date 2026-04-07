@@ -260,3 +260,10 @@ Main script:
 
 - `virtualization_host_conflict_fix_v5_bygz.bat`
 
+---
+
+## Thanks?
+
+If you found this useful and helped you alot (like it did to me), you can give me a little donation to keep this script updated :)
+
+Thank you for being awesome!
