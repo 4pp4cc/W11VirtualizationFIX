@@ -258,12 +258,12 @@ MIT license.
 
 Main script:
 
-- `virtualization_host_conflict_fix_v5_bygz.bat`
+- `virtualization_host_conflict_fix_v#_bygz.bat`
 
 ---
 
 ## Thanks?
 
-If you found this useful and helped you alot (like it did to me), you can give me a little donation to keep this script updated :)
-
+If you found this useful and helped you alot (like it did to me), you can give me a little Ko-Fi to keep this script updated :)
+https://ko-fi.com/gzred
 Thank you for being awesome!
