@@ -267,3 +267,8 @@ Main script:
 If you found this useful and helped you alot (like it did to me), you can give me a little Ko-Fi to keep this script updated :)
 https://ko-fi.com/gzred
 Thank you for being awesome!
+
+## Suggestions and contact?
+
+If you want to give a suggestion or get in touch with me: 4pp4cc@gmail.com or PM me :)
+Feel free to fork this project but i'd appreciate if you keep my Ko-Fi link <3
