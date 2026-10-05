@@ -49,10 +49,12 @@ echo.
 echo   [1] Normal fix  ^(recommended^)
 echo   [2] Aggressive fix
 echo   [3] Undo / restore
+echo   [4] Bypass Preserve State - No loss of Resume/Sleep
 echo   [Q] Quit
 echo.
-choice /C 123Q /N /M "Your choice: "
-if errorlevel 4 goto quit
+choice /C 1234Q /N /M "Your choice: "
+if errorlevel 5 goto quit
+if errorlevel 4 goto preserve_state
 if errorlevel 3 (
     set "ACTION=UNDO"
     set "MODE=RECOMMENDED"
@@ -70,6 +72,42 @@ if errorlevel 1 (
 )
 goto menu
 
+:preserve_state
+cls
+echo ==============================================================
+echo Bypass Preserve State - No loss of Resume/Sleep
+echo ==============================================================
+echo.
+echo This option restarts Windows normally. It does not reset VMware
+echo services or change Windows virtualization settings.
+echo No VM files, saved states, locks, snapshots or disks are deleted.
+echo.
+echo First click Preserve in the VMware error dialog.
+echo Save your work and close applications before continuing.
+echo The saved files stay untouched, but successful Resume is not guaranteed.
+echo After restart, reopen VMware and select Resume.
+echo.
+choice /C YN /N /M "Have you clicked Preserve and saved your work? [Y]es / [N]o: "
+if errorlevel 2 goto menu
+if errorlevel 1 goto preserve_restart_confirm
+goto menu
+
+:preserve_restart_confirm
+echo.
+choice /C YN /N /M "Restart Windows now? [Y]es / [N]o: "
+if errorlevel 2 goto menu
+if errorlevel 1 goto preserve_restart
+goto menu
+
+:preserve_restart
+echo Restarting Windows. VM files will not be modified by this script.
+shutdown.exe /r /t 0
+if errorlevel 1 (
+    echo Restart request failed. Restart Windows manually after saving your work.
+    pause
+    goto menu
+)
+exit /b
 :enforce
 cls
 echo ==============================================================
