@@ -24,6 +24,7 @@ The script presents a simple menu and lets the user choose:
 - **Normal fix**
 - **Aggressive fix**
 - **Undo / restore**
+- **Bypass Preserve State - No loss of Resume/Sleep**
 - **Quit**
 
 It can automatically request **Administrator** rights if needed.
@@ -59,6 +60,16 @@ Attempts to restore a safer default state by:
 - removing policy values written by the script
 - removing common registry overrides written by the script
 - restoring `SecureBiometrics` to `1`
+
+---
+
+### Option 4: Preserve State restart (v8 patch)
+
+When VMware reports a resume error, click **Preserve**, save your work, and choose **4**. The script asks you to confirm Preserve and then confirm a Windows restart. After reboot, reopen VMware and try Resume.
+
+This option only requests a normal Windows restart. It does not change virtualization settings or delete/modify VM files, including `.vmss`, `.vmem`, `.vmsn`, `.vmdk`, `.vmx`, locks or snapshots. It does not force-close applications; Windows may block restart until you handle an open application. Preserving the files is not a guarantee that VMware can resume an already damaged or incompatible state.
+
+The v8 filename, credits and existing Normal/Aggressive/Undo behavior are retained.
 
 ---
 
@@ -115,6 +126,7 @@ Keeping CPU virtualization enabled in BIOS/UEFI is intentional, because VMware, 
    - `1` for **Normal fix**
    - `2` for **Aggressive fix**
    - `3` for **Undo / restore**
+   - `4` for the Preserve State restart option
    - `Q` to quit
 6. Reboot after the script finishes.
 
